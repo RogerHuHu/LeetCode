@@ -6,8 +6,8 @@
 
 using namespace std;
 
-#define LINK_LIST
-//#define NORMAL_ALGO
+//#define LINK_LIST
+#define NORMAL_ALGO
 //#define TREE
 
 int main()
@@ -36,7 +36,16 @@ int main()
 
 #ifdef NORMAL_ALGO
     NormalAlgorithm normalAlgo;
-    cout << normalAlgo.HappyNumber(7) << endl;
+    vector<int> nums;
+    nums.push_back(0);
+    nums.push_back(1);
+    nums.push_back(2);
+    nums.push_back(4);
+    nums.push_back(5);
+    nums.push_back(7);
+    vector<string> result = normalAlgo.SummaryRanges(nums);
+    for(size_t i = 0; i < result.size(); ++i)
+        cout << result[i] << endl;
 #endif // NORMAL_ALGO
     return 0;
 }

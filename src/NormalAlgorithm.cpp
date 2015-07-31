@@ -72,3 +72,63 @@ int NormalAlgorithm::HouseRobber(vector<int>& nums)
 {
 
 }
+
+bool NormalAlgorithm::IsPowerOfTwo(int n)
+{
+    if(n <= 0)
+        return false;
+
+    if(((n - 1) & n) == 0)
+        return true;
+    return false;
+}
+
+vector<string> NormalAlgorithm::SummaryRanges(vector<int>& nums)
+{
+    vector<string> ret;
+    string temp;
+
+    if(nums.size() < 1)
+       return ret;
+
+    size_t ibeg = 0, iend = 0;
+
+    while(iend + 1 < nums.size())
+    {
+        if(nums[iend + 1] == nums[iend] + 1)
+            ++iend;
+        else
+        {
+            temp = (ibeg == iend) ? Int2String(nums[ibeg], 0, 10) : (Int2String(nums[ibeg], 0, 10) + "->" + Int2String(nums[iend], 0, 10));
+            ret.push_back(temp);
+            ++iend;
+            ibeg = iend;
+        }
+    }
+
+    temp = (ibeg == iend) ? Int2String(nums[ibeg], 0, 10) : (Int2String(nums[ibeg], 0, 10) + "->" + Int2String(nums[iend], 0, 10));
+    ret.push_back(temp);
+
+    return ret;
+}
+
+string NormalAlgorithm::Int2String(int value, size_t length, int frombase)
+{
+    stringstream ss;
+    switch(frombase)
+    {
+    case 10:
+        ss << value;
+        break;
+    case 16:
+        ss << std::hex << value;
+        break;
+    default:
+        break;
+    }
+
+    string result = ss.str();
+    if(result.size() < length)
+        result = string(length - result.size(), '0') + result;
+    return result;
+}

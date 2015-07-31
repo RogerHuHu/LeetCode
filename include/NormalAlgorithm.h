@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -40,6 +41,20 @@ class NormalAlgorithm
             you can rob tonight without alerting the police.
         */
         int HouseRobber(vector<int>& nums);
+
+        /*
+            Given an integer, write a function to determine if it is a power of two.
+        */
+        bool IsPowerOfTwo(int n);
+
+        /*
+            Given a sorted integer array without duplicates, return the summary of its ranges.
+
+            For example, given [0,1,2,4,5,7], return ["0->2","4->5","7"].
+        */
+        vector<string> SummaryRanges(vector<int>& nums);
+
+        string Int2String(int value, size_t length, int frombase);
     protected:
     private:
 };
