@@ -36,10 +36,14 @@
 		</Compiler>
 		<Unit filename="include/LinkedList.h" />
 		<Unit filename="include/NormalAlgorithm.h" />
+		<Unit filename="include/Queue.h" />
+		<Unit filename="include/Stack.h" />
 		<Unit filename="include/Tree.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/LinkedList.cpp" />
 		<Unit filename="src/NormalAlgorithm.cpp" />
+		<Unit filename="src/Queue.cpp" />
+		<Unit filename="src/Stack.cpp" />
 		<Unit filename="src/Tree.cpp" />
 		<Extensions>
 			<code_completion />

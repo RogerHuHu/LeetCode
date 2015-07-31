@@ -2,8 +2,7 @@
 
 using namespace std;
 
-TreeNode *Tree::LowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
-{
+TreeNode *Tree::LowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q) {
     if(!root || !p || !q)
         return NULL;
 
@@ -18,34 +17,50 @@ TreeNode *Tree::LowestCommonAncestor(TreeNode *root, TreeNode *p, TreeNode *q)
         return root;
 }
 
-void Tree::PostOrderFind(TreeNode *root, TreeNode *node)
-{
+TreeNode *Tree::InvertTree(TreeNode *root) {
+    if(!root)
+        return root;
+
+    TreeNode *cur = root;
+    TreeNode *temp;
+    queue<TreeNode *> traverseQueue;
+    traverseQueue.push(cur);
+
+    while(!traverseQueue.empty()) {
+        cur = traverseQueue.front();
+        traverseQueue.pop();
+        temp = cur->left;
+        cur->left = cur->right;
+        cur->right = temp;
+        if(cur->left)
+            traverseQueue.push(cur->left);
+        if(cur->right)
+            traverseQueue.push(cur->right);
+    }
+    return root;
+}
+
+void Tree::PostOrderFind(TreeNode *root, TreeNode *node) {
     TreeNode *pCur = root, *pLastVisit = NULL;
 
     stack<TreeNode *> traverseStack;
 
-    while(pCur)
-    {
+    while(pCur) {
         traverseStack.push(pCur);
         pCur = pCur->left;
     }
 
-    while(!traverseStack.empty())
-    {
+    while(!traverseStack.empty()) {
         pCur = traverseStack.top();
         traverseStack.pop();
 
-        if(pCur->right == NULL || pCur->right == pLastVisit)
-        {
+        if(pCur->right == NULL || pCur->right == pLastVisit) {
             cout << pCur->val << endl;
             pLastVisit = pCur;
-        }
-        else
-        {
+        } else {
             traverseStack.push(pCur);
             pCur = pCur->right;
-            while(pCur)
-            {
+            while(pCur) {
                 traverseStack.push(pCur);
                 pCur = pCur->left;
             }

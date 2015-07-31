@@ -3,6 +3,7 @@
 #include <string>
 #include "NormalAlgorithm.h"
 #include "LinkedList.h"
+#include "Tree.h"
 
 using namespace std;
 
@@ -10,8 +11,7 @@ using namespace std;
 #define NORMAL_ALGO
 //#define TREE
 
-int main()
-{
+int main() {
 #ifdef LINK_LIST
     //ListNode *node15 = new ListNode(1);
     ListNode *node14 = new ListNode(1);
@@ -36,16 +36,36 @@ int main()
 
 #ifdef NORMAL_ALGO
     NormalAlgorithm normalAlgo;
-    vector<int> nums;
-    nums.push_back(0);
-    nums.push_back(1);
-    nums.push_back(2);
-    nums.push_back(4);
-    nums.push_back(5);
-    nums.push_back(7);
-    vector<string> result = normalAlgo.SummaryRanges(nums);
-    for(size_t i = 0; i < result.size(); ++i)
-        cout << result[i] << endl;
+    cout << normalAlgo.ComputeArea(-3, 0, 3, 4, 0, -1, 9, 2) << endl;;
+//    vector<int> nums;
+//    nums.push_back(0);
+//    nums.push_back(1);
+//    nums.push_back(2);
+//    nums.push_back(4);
+//    nums.push_back(5);
+//    nums.push_back(7);
+//    vector<string> result = normalAlgo.SummaryRanges(nums);
+//    for(size_t i = 0; i < result.size(); ++i)
+//        cout << result[i] << endl;
 #endif // NORMAL_ALGO
+
+#ifdef TREE
+    Tree treeOper;
+    TreeNode *node1 = new TreeNode(1);
+    TreeNode *node2 = new TreeNode(3);
+    TreeNode *node3 = new TreeNode(6);
+    TreeNode *node4 = new TreeNode(9);
+    TreeNode *node5 = new TreeNode(2);
+    node5->left = node1;
+    node5->right = node2;
+    TreeNode *node6 = new TreeNode(7);
+    node6->left = node3;
+    node6->right = node4;
+    TreeNode *node7 = new TreeNode(4);
+    node7->left = node5;
+    node7->right = node6;
+
+    treeOper.InvertTree(NULL);
+#endif // TREE
     return 0;
 }

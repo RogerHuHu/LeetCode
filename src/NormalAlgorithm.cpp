@@ -4,18 +4,15 @@
 
 using namespace std;
 
-bool NormalAlgorithm::IsPrime(int n)
-{
-    for(int i = 3; i <= sqrt(n); i += 2)
-    {
+bool NormalAlgorithm::IsPrime(int n) {
+    for(int i = 3; i <= sqrt(n); i += 2) {
         if(n % i == 0)
             return false;
     }
     return true;
 }
 
-int NormalAlgorithm::CountPrimes(int n)
-{
+int NormalAlgorithm::CountPrimes(int n) {
     if(n <2)
         return false;
 
@@ -24,14 +21,11 @@ int NormalAlgorithm::CountPrimes(int n)
 
     memset(primeFlag, true, n);
 
-    for(int i = 2; i < n; ++i)
-    {
-        if(primeFlag[i])
-        {
+    for(int i = 2; i < n; ++i) {
+        if(primeFlag[i]) {
             ++count;
             int j = 2;
-            while(i * j < n)
-            {
+            while(i * j < n) {
                 primeFlag[i * j] = false;
                 ++j;
             }
@@ -42,24 +36,20 @@ int NormalAlgorithm::CountPrimes(int n)
     return count;
 }
 
-int NormalAlgorithm::GetSum(int n)
-{
+int NormalAlgorithm::GetSum(int n) {
     int sum = 0;
-    while(n > 0)
-    {
+    while(n > 0) {
         sum += (n % 10) * (n % 10);
         n /= 10;
     }
     return sum;
 }
 
-bool NormalAlgorithm::HappyNumber(int n)
-{
+bool NormalAlgorithm::HappyNumber(int n) {
     bool hashMap[730] = {false};
     int m = n;
 
-    while(m = GetSum(m))
-    {
+    while(m = GetSum(m)) {
         if(m == 1)
             return true;
         else if(hashMap[m] || m == n)
@@ -68,13 +58,11 @@ bool NormalAlgorithm::HappyNumber(int n)
     }
 }
 
-int NormalAlgorithm::HouseRobber(vector<int>& nums)
-{
+int NormalAlgorithm::HouseRobber(vector<int>& nums) {
 
 }
 
-bool NormalAlgorithm::IsPowerOfTwo(int n)
-{
+bool NormalAlgorithm::IsPowerOfTwo(int n) {
     if(n <= 0)
         return false;
 
@@ -83,22 +71,19 @@ bool NormalAlgorithm::IsPowerOfTwo(int n)
     return false;
 }
 
-vector<string> NormalAlgorithm::SummaryRanges(vector<int>& nums)
-{
+vector<string> NormalAlgorithm::SummaryRanges(vector<int>& nums) {
     vector<string> ret;
     string temp;
 
     if(nums.size() < 1)
-       return ret;
+        return ret;
 
     size_t ibeg = 0, iend = 0;
 
-    while(iend + 1 < nums.size())
-    {
+    while(iend + 1 < nums.size()) {
         if(nums[iend + 1] == nums[iend] + 1)
             ++iend;
-        else
-        {
+        else {
             temp = (ibeg == iend) ? Int2String(nums[ibeg], 0, 10) : (Int2String(nums[ibeg], 0, 10) + "->" + Int2String(nums[iend], 0, 10));
             ret.push_back(temp);
             ++iend;
@@ -112,11 +97,22 @@ vector<string> NormalAlgorithm::SummaryRanges(vector<int>& nums)
     return ret;
 }
 
-string NormalAlgorithm::Int2String(int value, size_t length, int frombase)
-{
+int NormalAlgorithm::ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H) {
+    int rectArea1 = (C - A) * (D - B);
+    int rectArea2 = (G - E) * (H - F);
+
+    int overlapXL = (A > E) ? A : E;
+    int overlapXR = (C < G) ? C : G;
+    int overlapYL = (B > F) ? B : F;
+    int overlapYH = (D < H) ? D : H;
+
+    int overlapAread = (overlapXL < overlapXR && overlapYL < overlapYH) ? (overlapXR - overlapXL) * (overlapYH - overlapYL) : 0;
+    return rectArea1 + rectArea2 - overlapAread;
+}
+
+string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
-    switch(frombase)
-    {
+    switch(frombase) {
     case 10:
         ss << value;
         break;
