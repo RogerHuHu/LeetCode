@@ -4,6 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <map>
+#include <stdint.h>
 
 using namespace std;
 
@@ -59,7 +61,52 @@ public:
     */
     int ComputeArea(int A, int B, int C, int D, int E, int F, int G, int H);
 
+    /*
+      Given an array of integers, find if the array contains any duplicates.
+    */
+    bool ContainsDuplicate(vector<int>& nums);
+
+    /*
+      Given an array of integers and an integer k, find out whether there there are two distinct indices
+      i and j in the array such that nums[i] = nums[j] and the difference between i and j is at most k.
+    */
+    bool ContainsNearbyDuplicate(vector<int>& nums, int k);
+
+    /*
+      Given two strings s and t, write a function to determine if t is an anagram of s.
+      For example,
+      s = "anagram", t = "nagaram", return true.
+      s = "rat", t = "car", return false.
+    */
+    bool IsAnagram(string s, string t);
+
+    /*
+      Reverse bits of a given 32 bits unsigned integer.
+      For example, given input 43261596 (represented in binary as
+      00000010100101000001111010011100), return 964176192
+      (represented in binary as 00111001011110000010100101000000).
+    */
+    uint32_t ReverseBits(uint32_t n);
+
+    /*
+      Rotate an array of n elements to the right by k steps.
+      For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+    */
+    void Rotate(vector<int>& nums, int k);
+
+    /*
+      Given an integer n, return the number of trailing zeroes in n!.
+      Note: Your solution should be in logarithmic time complexity.
+    */
+    int TrailingZeroes(int n);
+
     string Int2String(int value, size_t length, int frombase);
+
+    void QuickSort(char *array, int _low, int _high);
+
+    uint32_t GetBit(uint32_t value, int index);
+
+    void Reverse(vector<int> &nums, int start, int end);
 protected:
 private:
 };

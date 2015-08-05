@@ -36,17 +36,20 @@ int main() {
 
 #ifdef NORMAL_ALGO
     NormalAlgorithm normalAlgo;
-    cout << normalAlgo.ComputeArea(-3, 0, 3, 4, 0, -1, 9, 2) << endl;;
 //    vector<int> nums;
-//    nums.push_back(0);
 //    nums.push_back(1);
 //    nums.push_back(2);
-//    nums.push_back(4);
+//    nums.push_back(2);
+//    nums.push_back(1);
+//    nums.push_back(3);
 //    nums.push_back(5);
 //    nums.push_back(7);
-//    vector<string> result = normalAlgo.SummaryRanges(nums);
-//    for(size_t i = 0; i < result.size(); ++i)
-//        cout << result[i] << endl;
+//    nums.push_back(4);
+//    normalAlgo.Rotate(nums, 3);
+//    for(size_t i = 0; i < nums.size(); ++i)
+//        cout << nums[i] << " ";
+//    cout << endl;
+    cout << normalAlgo.TrailingZeroes(15) << endl;
 #endif // NORMAL_ALGO
 
 #ifdef TREE

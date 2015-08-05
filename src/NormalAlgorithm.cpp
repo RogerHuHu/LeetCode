@@ -59,7 +59,16 @@ bool NormalAlgorithm::HappyNumber(int n) {
 }
 
 int NormalAlgorithm::HouseRobber(vector<int>& nums) {
+    int rob = 0, n_rob = 0;
+    int temp;
 
+    for(size_t i = 0; i < nums.size(); ++i) {
+        temp = n_rob;
+        n_rob = rob > n_rob ? rob : n_rob;
+        rob = temp + nums[i];
+    }
+
+    return rob > n_rob ? rob : n_rob;
 }
 
 bool NormalAlgorithm::IsPowerOfTwo(int n) {
@@ -110,6 +119,84 @@ int NormalAlgorithm::ComputeArea(int A, int B, int C, int D, int E, int F, int G
     return rectArea1 + rectArea2 - overlapAread;
 }
 
+bool NormalAlgorithm::ContainsDuplicate(vector<int>& nums) {
+    map<int, int> int_map;
+
+    for(size_t i = 0; i < nums.size(); ++i) {
+        if(int_map.count(nums[i]) > 0)
+            return true;
+        int_map.insert(pair<int, int>(nums[i], i));
+    }
+    return false;
+}
+
+bool NormalAlgorithm::ContainsNearbyDuplicate(vector<int>& nums, int k) {
+    map<int, int> int_map;
+
+    for(size_t i = 0; i < nums.size(); ++i) {
+        if(int_map.count(nums[i]) > 0) {
+            map<int, int>::iterator iter = int_map.find(nums[i]);
+            if((i - iter->second) <= k)
+                return true;
+            iter->second = i;
+        }
+        else
+            int_map.insert(pair<int, int>(nums[i], i));
+    }
+    return false;
+}
+
+bool NormalAlgorithm::IsAnagram(string s, string t) {
+    if(s.size() != t.size())
+        return false;
+
+    char *array1 = (char *)s.c_str();
+    char *array2 = (char *)t.c_str();
+
+    QuickSort(array1, 0, s.size() - 1);
+    QuickSort(array2, 0, t.size() - 1);
+
+    for(size_t i = 0; i < s.size(); ++i) {
+        if(array1[i] != array2[i])
+            return false;
+    }
+    return true;
+}
+
+uint32_t NormalAlgorithm::ReverseBits(uint32_t n) {
+    uint32_t result = 0, temp;
+    int i = 0, j = 31;
+    for(int m = 0; m < 32; ++m) {
+        temp = GetBit(n, i);
+        result |= temp << j;
+        ++i;
+        --j;
+    }
+    return result;
+}
+
+void NormalAlgorithm::Rotate(vector<int>& nums, int k) {
+    if(nums.size() <= 1)
+        return;
+
+    k = k % nums.size();
+
+    Reverse(nums, 0, nums.size() - k - 1);
+    Reverse(nums, nums.size() - k, nums.size() - 1);
+    Reverse(nums, 0, nums.size() - 1);
+}
+
+int NormalAlgorithm::TrailingZeroes(int n) {
+    if(n < 1) return 0;
+    int cnt = 0;
+
+    while(n) {
+        cnt += n / 5;
+        n /= 5;
+    }
+    return cnt;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {
@@ -127,4 +214,40 @@ string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     if(result.size() < length)
         result = string(length - result.size(), '0') + result;
     return result;
+}
+
+void NormalAlgorithm::QuickSort(char *array, int _low, int _high) {
+    if(_low >= _high)
+        return;
+    char flag = array[_low], temp;
+    int low = _low, high = _high;
+    while(low < high) {
+        while(low < high && array[high] > flag)
+            --high;
+        while(low < high && array[low] <= flag)
+            ++low;
+        if(low < high) {
+            temp = array[high];
+            array[high] = array[low];
+            array[low] = temp;
+        }
+    }
+    array[_low] = array[low];
+    array[low] = flag;
+
+    QuickSort(array, _low, low - 1);
+    QuickSort(array, low + 1, _high);
+}
+
+uint32_t NormalAlgorithm::GetBit(uint32_t value, int index)
+{
+    return (value & (1 << index)) >> index;
+}
+
+void NormalAlgorithm::Reverse(vector<int> &nums, int start, int end) {
+    for(size_t i = start, j = end; i < j; ++i, --j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 }
