@@ -197,6 +197,25 @@ int NormalAlgorithm::TrailingZeroes(int n) {
     return cnt;
 }
 
+int NormalAlgorithm::TitleToNumber(string s) {
+    size_t cnt = s.size() - 1;
+    int sum = 0;
+    for(size_t i = 0; i < s.size(); ++i) {
+        sum += Power(26, cnt--) * (s.at(i) - 'A' + 1);
+    }
+
+    return sum;
+}
+
+string NormalAlgorithm::ConvertToTitle(int n) {
+    string result = "";
+    while(n) {
+        result = (char)((n - 1) % 26 + 'A') + result;
+        n = (n - 1) / 26;
+    }
+    return result;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {
@@ -250,4 +269,12 @@ void NormalAlgorithm::Reverse(vector<int> &nums, int start, int end) {
         nums[i] = nums[j];
         nums[j] = temp;
     }
+}
+
+int NormalAlgorithm::Power(int value, int pow) {
+    int result = 1;
+    while(pow--) {
+        result *= value;
+    }
+    return result;
 }

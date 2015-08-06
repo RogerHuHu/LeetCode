@@ -100,6 +100,32 @@ public:
     */
     int TrailingZeroes(int n);
 
+    /*
+      Given a column title as appear in an Excel sheet, return its corresponding column number.
+      For example:
+      A -> 1
+      B -> 2
+      C -> 3
+      ...
+      Z -> 26
+      AA -> 27
+      AB -> 28 
+    */
+    int TitleToNumber(string s);
+
+    /*
+      Given a positive integer, return its corresponding column title as appear in an Excel sheet.
+      For example:
+      1 -> A
+      2 -> B
+      3 -> C
+      ...
+      26 -> Z
+      27 -> AA
+      28 -> AB 
+    */
+    string ConvertToTitle(int n);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);
@@ -107,6 +133,8 @@ public:
     uint32_t GetBit(uint32_t value, int index);
 
     void Reverse(vector<int> &nums, int start, int end);
+
+    int Power(int value, int pow);
 protected:
 private:
 };

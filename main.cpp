@@ -49,7 +49,7 @@ int main() {
 //    for(size_t i = 0; i < nums.size(); ++i)
 //        cout << nums[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.TrailingZeroes(15) << endl;
+    cout << normalAlgo.ConvertToTitle(703) << endl;
 #endif // NORMAL_ALGO
 
 #ifdef TREE
