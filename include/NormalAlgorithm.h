@@ -126,6 +126,12 @@ public:
     */
     string ConvertToTitle(int n);
 
+    /*
+      Given an array of size n, find the majority element. The majority element is the element that 
+      appears more than ⌊ n/2 ⌋ times.
+    */
+    int MajorityElement(vector<int> &nums);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);

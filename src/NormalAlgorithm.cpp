@@ -216,6 +216,26 @@ string NormalAlgorithm::ConvertToTitle(int n) {
     return result;
 }
 
+int NormalAlgorithm::MajorityElement(vector<int> &nums) {
+    int candidate;
+    int count = 0;
+
+    for(size_t i = 0; i < nums.size(); ++i) {
+        if(count == 0) {
+            candidate = nums[i];
+            count = 1;
+        }
+        else {
+            if(nums[i] == candidate)
+                ++count;
+            else
+                --count;
+        }
+    }
+
+    return candidate;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {
