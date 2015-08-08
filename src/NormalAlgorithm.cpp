@@ -119,6 +119,48 @@ int NormalAlgorithm::ComputeArea(int A, int B, int C, int D, int E, int F, int G
     return rectArea1 + rectArea2 - overlapAread;
 }
 
+vector<int> NormalAlgorithm::DiffWaysToCompute(string input) {
+    vector<int> result;
+
+    size_t len = input.size();
+    for(size_t i = 0; i < len; ++i) {
+        if(input.at(i) == '+' || input.at(i) == '-' || input.at(i) == '*') {
+            vector<int> leftPart = DiffWaysToCompute(input.substr(0, i));
+            vector<int> rightPart = DiffWaysToCompute(input.substr(i + 1));
+
+            for(size_t m = 0; m < leftPart.size(); ++m) {
+                for(size_t n = 0; n < rightPart.size(); ++n) {
+                    switch(input.at(i)) {
+                        case '+' :
+                            result.push_back(leftPart[m] + rightPart[n]); break;
+                        case '-' :
+                            result.push_back(leftPart[m] - rightPart[n]); break;
+                        case '*' :
+                            result.push_back(leftPart[m] * rightPart[n]); break;
+                        default : break;
+                    }
+                }
+            }
+        }
+    }
+
+    if(result.empty())
+        result.push_back(atoi(input.c_str()));
+
+    return result;
+}
+
+bool NormalAlgorithm::SearchMatrix(vector<vector<int> >& matrix, int target) {
+    size_t hSize = matrix.size(), vSize = matrix[0].size();
+    int i = 0, j = vSize - 1;
+    while(i < hSize && j >= 0) {
+        if(matrix[i][j] == target) return true;
+        else if(matrix[i][j] > target) --j;
+        else ++i;
+    }
+    return false;
+}
+
 bool NormalAlgorithm::ContainsDuplicate(vector<int>& nums) {
     map<int, int> int_map;
 
@@ -236,17 +278,38 @@ int NormalAlgorithm::MajorityElement(vector<int> &nums) {
     return candidate;
 }
 
+int NormalAlgorithm::CompareVersion(string version1, string version2) {
+    vector<string> vec1 = Split(version1, ".");
+    vector<string> vec2 = Split(version2, ".");
+
+    size_t i, j;
+
+    int value1, value2;
+    for(i = 0, j = 0; i < vec1.size() && j < vec2.size(); ++i, ++j) {
+        value1 = String2UInt(vec1[i], 10);
+        value2 = String2UInt(vec2[j], 10);
+        if(value1 != value2)
+            return (value1 > value2) ? 1 : -1;
+    }
+
+    for(; i < vec1.size(); ++i)
+        if(String2UInt(vec1[i], 10) != 0) return 1;
+    for(; j < vec2.size(); ++j)
+        if(String2UInt(vec2[j], 10) != 0) return -1;
+    return 0;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {
-    case 10:
-        ss << value;
-        break;
-    case 16:
-        ss << std::hex << value;
-        break;
-    default:
-        break;
+        case 10:
+            ss << value;
+            break;
+        case 16:
+            ss << std::hex << value;
+            break;
+        default:
+            break;
     }
 
     string result = ss.str();
@@ -297,4 +360,24 @@ int NormalAlgorithm::Power(int value, int pow) {
         result *= value;
     }
     return result;
+}
+
+vector<string> NormalAlgorithm::Split(string value, string pattern) {
+    string::size_type pos;
+    vector<string> result;
+    value += pattern;
+    string::size_type size = value.size();
+
+    for(string::size_type i = 0; i < size; ++i) {
+        pos = value.find(pattern, i);
+        if(pos < size) {
+            result.push_back(value.substr(i, pos - i));
+            i = pos + pattern.size() - 1;
+        }
+    }
+    return result;
+}
+
+uint32_t NormalAlgorithm::String2UInt(string value, int frombase) {
+    return (uint32_t)strtol(value.c_str(), NULL, frombase);
 }

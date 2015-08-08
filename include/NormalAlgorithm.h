@@ -6,6 +6,7 @@
 #include <sstream>
 #include <map>
 #include <stdint.h>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -109,7 +110,7 @@ public:
       ...
       Z -> 26
       AA -> 27
-      AB -> 28 
+      AB -> 28
     */
     int TitleToNumber(string s);
 
@@ -122,15 +123,54 @@ public:
       ...
       26 -> Z
       27 -> AA
-      28 -> AB 
+      28 -> AB
     */
     string ConvertToTitle(int n);
 
     /*
-      Given an array of size n, find the majority element. The majority element is the element that 
+      Given an array of size n, find the majority element. The majority element is the element that
       appears more than ⌊ n/2 ⌋ times.
     */
     int MajorityElement(vector<int> &nums);
+
+    /*
+      Compare two version numbers version1 and version2.
+      If version1 > version2 return 1, if version1 < version2 return -1, otherwise return 0.
+      Here is an example of version numbers ordering:
+      0.1 < 1.1 < 1.2 < 13.37
+    */
+    int CompareVersion(string version1, string version2);
+
+    /*
+      Given a string of numbers and operators, return all possible results from computing all
+      the different possible ways to group numbers and operators. The valid operators are
+      +, - and *.
+      Example 1
+      Input: "2-1-1".
+      ((2-1)-1) = 0
+      (2-(1-1)) = 2
+      Output: [0, 2]
+    */
+    vector<int> DiffWaysToCompute(string input);
+
+    /*
+       Write an efficient algorithm that searches for a value in an m x n matrix. This matrix
+       has the following properties:
+       1.Integers in each row are sorted in ascending from left to right.
+       2.Integers in each column are sorted in ascending from top to bottom.
+       For example,
+       Consider the following matrix:
+       [
+           [1,   4,  7, 11, 15],
+           [2,   5,  8, 12, 19],
+           [3,   6,  9, 16, 22],
+           [10, 13, 14, 17, 24],
+           [18, 21, 23, 26, 30]
+       ]
+       Given target = 5, return true.
+       Given target = 20, return false.
+    */
+    bool SearchMatrix(vector<vector<int> >& matrix, int target);
 
     string Int2String(int value, size_t length, int frombase);
 
@@ -141,6 +181,10 @@ public:
     void Reverse(vector<int> &nums, int start, int end);
 
     int Power(int value, int pow);
+
+    vector<string> Split(string value, string pattern);
+
+    uint32_t String2UInt(string value, int frombase);
 protected:
 private:
 };

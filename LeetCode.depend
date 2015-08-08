@@ -56,10 +56,10 @@
 	<iostream>
 	<stack>
 
-1438311655 source:/home/roger/Projects/git/LeetCode/src/LinkedList.cpp
+1438929993 source:/home/roger/Projects/git/LeetCode/src/LinkedList.cpp
 	"LinkedList.h"
 
-1438311648 /home/roger/Projects/git/LeetCode/include/LinkedList.h
+1438926966 /home/roger/Projects/git/LeetCode/include/LinkedList.h
 	<iostream>
 	<malloc.h>
 
@@ -71,7 +71,7 @@
 	<stack>
 	<queue>
 
-1438860801 source:/home/roger/Projects/git/LeetCode/main.cpp
+1439019648 source:/home/roger/Projects/git/LeetCode/main.cpp
 	<iostream>
 	<map>
 	<string>
@@ -79,14 +79,15 @@
 	"LinkedList.h"
 	"Tree.h"
 
-1438910086 /home/roger/Projects/git/LeetCode/include/NormalAlgorithm.h
+1439015674 /home/roger/Projects/git/LeetCode/include/NormalAlgorithm.h
 	<iostream>
 	<vector>
 	<sstream>
 	<map>
 	<stdint.h>
+	<stdlib.h>
 
-1438860774 source:/home/roger/Projects/git/LeetCode/src/NormalAlgorithm.cpp
+1439019771 source:/home/roger/Projects/git/LeetCode/src/NormalAlgorithm.cpp
 	<math.h>
 	<memory.h>
 	"NormalAlgorithm.h"

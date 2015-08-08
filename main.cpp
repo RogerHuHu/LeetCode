@@ -23,10 +23,17 @@ int main() {
     ListNode *node11 = new ListNode(1);
     node11->next = node12;
 
+    ListNode *node22 = new ListNode(3);
+    node22->next = node13;
+    ListNode *node21 = new ListNode(4);
+    node21->next = node22;
+    ListNode *node20 = new ListNode(4);
+    node20->next = node21;
+
     LinkedList linkList;
     //ListNode *result;
     //result = linkList.RemoveElements(node15, 10);
-    cout << linkList.IsPalindrome(node11) << endl;
+    cout << linkList.GetIntersectionNode(node21, node11)->val << endl;
 //    while(node11)
 //    {
 //        cout << node11->val << " ";
@@ -49,7 +56,12 @@ int main() {
 //    for(size_t i = 0; i < nums.size(); ++i)
 //        cout << nums[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.ConvertToTitle(703) << endl;
+    vector<int> vec1;
+    vec1.push_back(-1);
+    vec1.push_back(-1);
+    vector<vector<int> >vec2;
+    vec2.push_back(vec1);
+    normalAlgo.SearchMatrix(vec2, -2);
 #endif // NORMAL_ALGO
 
 #ifdef TREE

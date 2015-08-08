@@ -74,3 +74,35 @@ ListNode *LinkedList::LinkedListReverse(ListNode *head) {
     return lat;
 }
 
+ListNode *LinkedList::GetIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *p1 = headA, *p2 = headB;
+    int cnt1 = 0, cnt2 = 0;
+    while(p1) {
+        p1 = p1->next;
+        ++cnt1;
+    }
+
+    while(p2) {
+        p2 = p2->next;
+        ++cnt2;
+    }
+
+    p1 = headA;
+    p2 = headB;
+    if(cnt1 > cnt2) {
+        int diff = cnt1 - cnt2;
+        while(diff--)
+            p1 = p1->next;
+    }
+    else if(cnt1 < cnt2) {
+        int diff = cnt2 - cnt1;
+        while(diff--)
+            p2 = p2->next;
+    }
+
+    while(p1 != p2) {
+        p1 = p1->next;
+        p2 = p2->next;
+    }
+    return p1;
+}
