@@ -119,48 +119,6 @@ int NormalAlgorithm::ComputeArea(int A, int B, int C, int D, int E, int F, int G
     return rectArea1 + rectArea2 - overlapAread;
 }
 
-vector<int> NormalAlgorithm::DiffWaysToCompute(string input) {
-    vector<int> result;
-
-    size_t len = input.size();
-    for(size_t i = 0; i < len; ++i) {
-        if(input.at(i) == '+' || input.at(i) == '-' || input.at(i) == '*') {
-            vector<int> leftPart = DiffWaysToCompute(input.substr(0, i));
-            vector<int> rightPart = DiffWaysToCompute(input.substr(i + 1));
-
-            for(size_t m = 0; m < leftPart.size(); ++m) {
-                for(size_t n = 0; n < rightPart.size(); ++n) {
-                    switch(input.at(i)) {
-                        case '+' :
-                            result.push_back(leftPart[m] + rightPart[n]); break;
-                        case '-' :
-                            result.push_back(leftPart[m] - rightPart[n]); break;
-                        case '*' :
-                            result.push_back(leftPart[m] * rightPart[n]); break;
-                        default : break;
-                    }
-                }
-            }
-        }
-    }
-
-    if(result.empty())
-        result.push_back(atoi(input.c_str()));
-
-    return result;
-}
-
-bool NormalAlgorithm::SearchMatrix(vector<vector<int> >& matrix, int target) {
-    size_t hSize = matrix.size(), vSize = matrix[0].size();
-    int i = 0, j = vSize - 1;
-    while(i < hSize && j >= 0) {
-        if(matrix[i][j] == target) return true;
-        else if(matrix[i][j] > target) --j;
-        else ++i;
-    }
-    return false;
-}
-
 bool NormalAlgorithm::ContainsDuplicate(vector<int>& nums) {
     map<int, int> int_map;
 
@@ -297,6 +255,52 @@ int NormalAlgorithm::CompareVersion(string version1, string version2) {
     for(; j < vec2.size(); ++j)
         if(String2UInt(vec2[j], 10) != 0) return -1;
     return 0;
+}
+
+vector<int> NormalAlgorithm::DiffWaysToCompute(string input) {
+    vector<int> result;
+
+    size_t len = input.size();
+    for(size_t i = 0; i < len; ++i) {
+        if(input.at(i) == '+' || input.at(i) == '-' || input.at(i) == '*') {
+            vector<int> leftPart = DiffWaysToCompute(input.substr(0, i));
+            vector<int> rightPart = DiffWaysToCompute(input.substr(i + 1));
+
+            for(size_t m = 0; m < leftPart.size(); ++m) {
+                for(size_t n = 0; n < rightPart.size(); ++n) {
+                    switch(input.at(i)) {
+                        case '+' :
+                            result.push_back(leftPart[m] + rightPart[n]); break;
+                        case '-' :
+                            result.push_back(leftPart[m] - rightPart[n]); break;
+                        case '*' :
+                            result.push_back(leftPart[m] * rightPart[n]); break;
+                        default : break;
+                    }
+                }
+            }
+        }
+    }
+
+    if(result.empty())
+        result.push_back(atoi(input.c_str()));
+
+    return result;
+}
+
+bool NormalAlgorithm::SearchMatrix(vector<vector<int> >& matrix, int target) {
+    size_t hSize = matrix.size(), vSize = matrix[0].size();
+    int i = 0, j = vSize - 1;
+    while(i < hSize && j >= 0) {
+        if(matrix[i][j] == target) return true;
+        else if(matrix[i][j] > target) --j;
+        else ++i;
+    }
+    return false;
+}
+
+vector<int> NormalAlgorithm::ProductExceptSelf(vector<int>& nums) {
+    
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
