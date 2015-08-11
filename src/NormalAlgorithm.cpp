@@ -300,7 +300,26 @@ bool NormalAlgorithm::SearchMatrix(vector<vector<int> >& matrix, int target) {
 }
 
 vector<int> NormalAlgorithm::ProductExceptSelf(vector<int>& nums) {
-    
+    vector<int> result(nums.size(), 1);
+    for(size_t i = 1; i < nums.size(); ++i)
+        result[i] = result[i - 1] * nums[i - 1];
+
+    int right = 1;
+    for(int j = nums.size() - 1; j >= 0; --j) {
+        result[j] *= right;
+        right *= nums[j];
+    }
+    return result;
+}
+
+int NormalAlgorithm::CountDigitOne(int n) {
+    int oneCnt = 0;
+    for(long m = 1; m <= n; m *= 10) {
+        int a = n / m;
+        int b = n % m;
+        oneCnt += (a + 8) / 10 * m + (a % 10 == 1) * (b + 1);
+    }
+    return oneCnt;
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {

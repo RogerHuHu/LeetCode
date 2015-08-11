@@ -46,22 +46,18 @@ int main() {
 //    vector<int> nums;
 //    nums.push_back(1);
 //    nums.push_back(2);
-//    nums.push_back(2);
-//    nums.push_back(1);
+//    nums.push_back(3);
+//    nums.push_back(4);
 //    nums.push_back(3);
 //    nums.push_back(5);
 //    nums.push_back(7);
 //    nums.push_back(4);
-//    normalAlgo.Rotate(nums, 3);
-//    for(size_t i = 0; i < nums.size(); ++i)
-//        cout << nums[i] << " ";
+//    vector<int> result = normalAlgo.ProductExceptSelf(nums);
+//    for(size_t i = 0; i < result.size(); ++i)
+//        cout << result[i] << " ";
 //    cout << endl;
-    vector<int> vec1;
-    vec1.push_back(-1);
-    vec1.push_back(-1);
-    vector<vector<int> >vec2;
-    vec2.push_back(vec1);
-    normalAlgo.SearchMatrix(vec2, -2);
+    cout << normalAlgo.CountDigitOne(-1) << endl;
+
 #endif // NORMAL_ALGO
 
 #ifdef TREE
