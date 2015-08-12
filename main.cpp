@@ -8,8 +8,8 @@
 using namespace std;
 
 //#define LINK_LIST
-#define NORMAL_ALGO
-//#define TREE
+//#define NORMAL_ALGO
+#define TREE
 
 int main() {
 #ifdef LINK_LIST
@@ -62,21 +62,27 @@ int main() {
 
 #ifdef TREE
     Tree treeOper;
-    TreeNode *node1 = new TreeNode(1);
-    TreeNode *node2 = new TreeNode(3);
-    TreeNode *node3 = new TreeNode(6);
-    TreeNode *node4 = new TreeNode(9);
-    TreeNode *node5 = new TreeNode(2);
+    TreeNode *node1 = new TreeNode(4);
+    TreeNode *node2 = new TreeNode(7);
+    TreeNode *node3 = new TreeNode(13);
+    TreeNode *node4 = new TreeNode(1);
+    TreeNode *node5 = new TreeNode(6);
     node5->left = node1;
     node5->right = node2;
-    TreeNode *node6 = new TreeNode(7);
+    TreeNode *node6 = new TreeNode(14);
     node6->left = node3;
-    node6->right = node4;
-    TreeNode *node7 = new TreeNode(4);
-    node7->left = node5;
-    node7->right = node6;
+    //node6->right = node4;
+    TreeNode *node7 = new TreeNode(3);
+    node7->left = node4;
+    node7->right = node5;
+    TreeNode *node8 = new TreeNode(10);
+    //node7->left = node5;
+    node8->right = node6;
+    TreeNode *node9 = new TreeNode(8);
+    node9->left = node7;
+    node9->right = node8;
 
-    treeOper.InvertTree(NULL);
+    treeOper.KthSmallest(node9, 7);
 #endif // TREE
     return 0;
 }

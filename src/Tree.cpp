@@ -50,6 +50,31 @@ TreeNode *Tree::LowestCommonAncestorBT(TreeNode *root, TreeNode *p, TreeNode *q)
     return !left ? right : !right ? left : root;
 }
 
+int Tree::KthSmallest(TreeNode *root, int k) {
+    if(!root) return 0;
+
+    TreeNode *pCur = root;
+    stack<TreeNode *> traverseStack;
+    int cnt = 0;
+
+    while(pCur) {
+        traverseStack.push(pCur);
+        pCur = pCur->left;
+    }
+
+    while(!traverseStack.empty()) {
+        pCur = traverseStack.top();
+        traverseStack.pop();
+        if(++cnt == k) return pCur->val;
+        pCur = pCur->right;
+        while(pCur) {
+            traverseStack.push(pCur);
+            pCur = pCur->left;
+        }
+    }
+    return 0;
+}
+
 void Tree::PostOrderFind(TreeNode *root, TreeNode *node) {
     TreeNode *pCur = root, *pLastVisit = NULL;
 

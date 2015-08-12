@@ -63,15 +63,15 @@
 	<iostream>
 	<malloc.h>
 
-1439280834 source:/home/roger/Projects/git/LeetCode/src/Tree.cpp
+1439360754 source:/home/roger/Projects/git/LeetCode/src/Tree.cpp
 	"Tree.h"
 
-1439259668 /home/roger/Projects/git/LeetCode/include/Tree.h
+1439358448 /home/roger/Projects/git/LeetCode/include/Tree.h
 	<iostream>
 	<stack>
 	<queue>
 
-1439280917 source:/home/roger/Projects/git/LeetCode/main.cpp
+1439360815 source:/home/roger/Projects/git/LeetCode/main.cpp
 	<iostream>
 	<map>
 	<string>
@@ -87,7 +87,7 @@
 	<stdint.h>
 	<stdlib.h>
 
-1439280549 source:/home/roger/Projects/git/LeetCode/src/NormalAlgorithm.cpp
+1439280966 source:/home/roger/Projects/git/LeetCode/src/NormalAlgorithm.cpp
 	<math.h>
 	<memory.h>
 	"NormalAlgorithm.h"
