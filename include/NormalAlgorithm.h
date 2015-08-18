@@ -189,6 +189,13 @@ public:
     */
     int CountDigitOne(int n);
 
+    /*
+       Given a non-negative integer num, repeatedly add all its digits until the result has only one digit.
+       For example:
+       Given num = 38, the process is like: 3 + 8 = 11, 1 + 1 = 2. Since 2 has only one digit, return it.
+    */
+    int AddDigits(int num);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);

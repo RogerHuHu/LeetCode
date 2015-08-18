@@ -322,6 +322,10 @@ int NormalAlgorithm::CountDigitOne(int n) {
     return oneCnt;
 }
 
+int NormalAlgorithm::AddDigits(int num) {
+    return (num - 1) % 9 + 1;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {

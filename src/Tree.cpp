@@ -75,6 +75,40 @@ int Tree::KthSmallest(TreeNode *root, int k) {
     return 0;
 }
 
+vector<string> Tree::BinaryTreePaths(TreeNode *root) {
+    vector<string> pathVec;
+    if(!root) return pathVec;
+    stack<TreeNode *> traverseStack;
+    TreeNode *pCur = root->left;
+    string path;
+    int cnt = 0;
+    traverseStack.push(root);
+    path += Int2String(root->val);
+    while(pCur) {
+        path += "->" + Int2String(pCur->val);
+        traverseStack.push(pCur);
+        pCur = pCur->left;
+    }
+
+    while(!traverseStack.empty()) {
+        pCur = traverseStack.top();
+        traverseStack.pop();
+        ++cnt;
+        if(!pCur->left && !pCur->right) {
+            pathVec.push_back(path);
+            path.erase(path.size() - cnt);
+            cnt = 0;
+        }
+        pCur = pCur->right;
+
+        while(pCur) {
+            path += "->" + Int2String(pCur->val);
+            traverseStack.push(pCur);
+            pCur = pCur->left;
+        }
+    }
+}
+
 void Tree::PostOrderFind(TreeNode *root, TreeNode *node) {
     TreeNode *pCur = root, *pLastVisit = NULL;
 
@@ -101,4 +135,23 @@ void Tree::PostOrderFind(TreeNode *root, TreeNode *node) {
             }
         }
     }
+}
+
+string Tree::Int2String(int value, size_t length, int frombase) {
+    stringstream ss;
+    switch(frombase) {
+        case 10:
+            ss << value;
+            break;
+        case 16:
+            ss << std::hex << value;
+            break;
+        default:
+            break;
+    }
+
+    string result = ss.str();
+    if(result.size() < length)
+        result = string(length - result.size(), '0') + result;
+    return result;
 }
