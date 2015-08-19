@@ -78,35 +78,34 @@ int Tree::KthSmallest(TreeNode *root, int k) {
 vector<string> Tree::BinaryTreePaths(TreeNode *root) {
     vector<string> pathVec;
     if(!root) return pathVec;
-    stack<TreeNode *> traverseStack;
-    TreeNode *pCur = root->left;
-    string path;
-    int cnt = 0;
-    traverseStack.push(root);
-    path += Int2String(root->val);
-    while(pCur) {
-        path += "->" + Int2String(pCur->val);
-        traverseStack.push(pCur);
-        pCur = pCur->left;
+
+    if(!root->left && !root->right) {
+        string path = Int2String(root->val, 0, 10);
+        pathVec.push_back(path);
+        return pathVec;
     }
 
-    while(!traverseStack.empty()) {
-        pCur = traverseStack.top();
-        traverseStack.pop();
-        ++cnt;
-        if(!pCur->left && !pCur->right) {
+    if(root->left) {
+        vector<string> leftPath = BinaryTreePaths(root->left);
+        for(size_t i = 0; i < leftPath.size(); ++i) {
+            string path = Int2String(root->val, 0, 10);
+            path += "->";
+            path += leftPath[i];
             pathVec.push_back(path);
-            path.erase(path.size() - cnt);
-            cnt = 0;
-        }
-        pCur = pCur->right;
-
-        while(pCur) {
-            path += "->" + Int2String(pCur->val);
-            traverseStack.push(pCur);
-            pCur = pCur->left;
         }
     }
+
+    if(root->right) {
+        vector<string> rightPath = BinaryTreePaths(root->right);
+        for(size_t i = 0; i < rightPath.size(); ++i) {
+            string path = Int2String(root->val, 0, 10);
+            path += "->";
+            path += rightPath[i];
+            pathVec.push_back(path);
+        }
+    }
+
+    return pathVec;
 }
 
 void Tree::PostOrderFind(TreeNode *root, TreeNode *node) {

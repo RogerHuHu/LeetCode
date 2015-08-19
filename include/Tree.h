@@ -4,6 +4,12 @@
 #include <iostream>
 #include <stack>
 #include <queue>
+#include <vector>
+#include <string>
+#include <sstream>
+
+using std::vector;
+using std::string;
 
 struct TreeNode {
     int val;

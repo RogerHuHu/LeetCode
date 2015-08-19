@@ -8,8 +8,8 @@
 using namespace std;
 
 //#define LINK_LIST
-//#define NORMAL_ALGO
-#define TREE
+#define NORMAL_ALGO
+//#define TREE
 
 int main() {
 #ifdef LINK_LIST
@@ -56,7 +56,7 @@ int main() {
 //    for(size_t i = 0; i < result.size(); ++i)
 //        cout << result[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.CountDigitOne(-1) << endl;
+    cout << normalAlgo.IsUgly(-2147483648) << endl;
 
 #endif // NORMAL_ALGO
 
@@ -82,7 +82,9 @@ int main() {
     node9->left = node7;
     node9->right = node8;
 
-    treeOper.KthSmallest(node9, 7);
+    vector<string> result = treeOper.BinaryTreePaths(node9);
+    for(size_t i = 0; i < result.size(); ++i)
+        cout << result[i] << endl;
 #endif // TREE
     return 0;
 }

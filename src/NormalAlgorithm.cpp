@@ -5,6 +5,7 @@
 using namespace std;
 
 bool NormalAlgorithm::IsPrime(int n) {
+    if(n <= 1) return false;
     for(int i = 3; i <= sqrt(n); i += 2) {
         if(n % i == 0)
             return false;
@@ -324,6 +325,16 @@ int NormalAlgorithm::CountDigitOne(int n) {
 
 int NormalAlgorithm::AddDigits(int num) {
     return (num - 1) % 9 + 1;
+}
+
+bool NormalAlgorithm::IsUgly(int num) {
+    if(num <= 0) return false;
+
+    while(num % 5 == 0) num /= 5;
+    while(num % 3 == 0) num /= 3;
+    while(num % 2 == 0) num /= 2;
+
+    return num == 1;
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
