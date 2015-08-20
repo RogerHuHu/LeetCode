@@ -330,11 +330,19 @@ int NormalAlgorithm::AddDigits(int num) {
 bool NormalAlgorithm::IsUgly(int num) {
     if(num <= 0) return false;
 
-    while(num % 5 == 0) num /= 5;
+    while(num % 5 == 0) num /= 5;NormalAlgorithm
     while(num % 3 == 0) num /= 3;
     while(num % 2 == 0) num /= 2;
 
     return num == 1;
+}
+
+int NormalAlgorithm::NthUglyNumber(int n) {
+    int cnt = 0, i = 1;
+    while(cnt < n) {
+        if(IsUgly(i++)) ++cnt;
+    }
+    return --i;
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
