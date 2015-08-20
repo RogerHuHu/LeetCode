@@ -330,7 +330,7 @@ int NormalAlgorithm::AddDigits(int num) {
 bool NormalAlgorithm::IsUgly(int num) {
     if(num <= 0) return false;
 
-    while(num % 5 == 0) num /= 5;NormalAlgorithm
+    while(num % 5 == 0) num /= 5;
     while(num % 3 == 0) num /= 3;
     while(num % 2 == 0) num /= 2;
 
@@ -338,24 +338,33 @@ bool NormalAlgorithm::IsUgly(int num) {
 }
 
 int NormalAlgorithm::NthUglyNumber(int n) {
-    int cnt = 0, i = 1;
-    while(cnt < n) {
-        if(IsUgly(i++)) ++cnt;
+    int *uglyArray = new int[n];
+    *uglyArray = 1;
+    int index, index2, index3, index5;
+    int value1, value2, value3, minValue;
+    index = 1;
+    index2 = index3 = index5 = 0;
+    while(index < n) {
+        value1 = *(uglyArray + index2) * 2;
+        value2 = *(uglyArray + index3) * 3;
+        value3 = *(uglyArray + index5) * 5;
+        minValue = Min(value1, value2, value3);
+        *(uglyArray + index) = minValue;
+
+        if(minValue == value1) ++index2;
+        if(minValue == value2) ++index3;
+        if(minValue == value3) ++index5;
+        ++index;
     }
-    return --i;
+    return *(uglyArray + index - 1);
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {
-        case 10:
-            ss << value;
-            break;
-        case 16:
-            ss << std::hex << value;
-            break;
-        default:
-            break;
+        case 10: ss << value; break;
+        case 16: ss << std::hex << value; break;
+        default: break;
     }
 
     string result = ss.str();
@@ -426,4 +435,9 @@ vector<string> NormalAlgorithm::Split(string value, string pattern) {
 
 uint32_t NormalAlgorithm::String2UInt(string value, int frombase) {
     return (uint32_t)strtol(value.c_str(), NULL, frombase);
+}
+
+int NormalAlgorithm::Min(int a, int b, int c) {
+    int temp = a < b ? a : b;
+    return temp < c ? temp : c;
 }

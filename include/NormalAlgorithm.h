@@ -225,6 +225,8 @@ public:
     vector<string> Split(string value, string pattern);
 
     uint32_t String2UInt(string value, int frombase);
+
+    int Min(int a, int b, int c);
 protected:
 private:
 };

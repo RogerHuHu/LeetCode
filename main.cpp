@@ -56,7 +56,7 @@ int main() {
 //    for(size_t i = 0; i < result.size(); ++i)
 //        cout << result[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.IsUgly(-2147483648) << endl;
+    cout << normalAlgo.NthUglyNumber(9) << endl;
 
 #endif // NORMAL_ALGO
 
