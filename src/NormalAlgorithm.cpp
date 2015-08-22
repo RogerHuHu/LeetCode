@@ -359,6 +359,67 @@ int NormalAlgorithm::NthUglyNumber(int n) {
     return *(uglyArray + index - 1);
 }
 
+vector<int> NormalAlgorithm::SingleNumber(vector<int> &nums) {
+    int len = nums.size();
+    int AxorB = 0;
+    for(int i = 0; i < len; i++) {
+        AxorB ^= nums[i];
+    }
+    int temp = ~(AxorB-1);
+    int mask = AxorB & (~(AxorB-1));
+    int A = 0;
+    int B = 0;
+    for(int i = 0; i < len; i++) {
+        if((mask & nums[i]) == 0)
+            A ^= nums[i];
+        else
+            B ^= nums[i];
+    }
+    return vector<int>({A, B});
+}
+
+vector<int> NormalAlgorithm::MajorityElementII(vector<int> &nums) {
+    vector<int> result;
+    if(nums.size() < 1) return result;
+    int thresh = nums.size() / 3;
+    int candidate1 = nums[0], candidate2, cnt1 = 0, cnt2 = 0;
+    for(size_t i = 0; i < nums.size(); ++i) {
+        if(candidate1 == nums[i]) {
+            ++cnt1;
+        }
+        else if(candidate2 == nums[i]) {
+            ++cnt2;
+        }
+        else if(cnt1 == 0) {
+            candidate1 = nums[i];
+            cnt1 = 1;
+        }
+        else if(cnt2 == 0) {
+            candidate2 = nums[i];
+            cnt2 = 1;
+        }
+        else {
+            --cnt1;
+            --cnt2;
+        }
+    }
+
+    cnt1 = cnt2 = 0;
+
+    for(size_t j = 0; j < nums.size(); ++j) {
+        if(nums[j] == candidate1)
+            ++cnt1;
+        else if(nums[j] == candidate2)
+            ++cnt2;
+    }
+
+    if(cnt1 > thresh)
+        result.push_back(candidate1);
+    if(cnt2 > thresh)
+        result.push_back(candidate2);
+    return result;
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {

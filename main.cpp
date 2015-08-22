@@ -43,20 +43,21 @@ int main() {
 
 #ifdef NORMAL_ALGO
     NormalAlgorithm normalAlgo;
-//    vector<int> nums;
-//    nums.push_back(1);
-//    nums.push_back(2);
-//    nums.push_back(3);
-//    nums.push_back(4);
-//    nums.push_back(3);
-//    nums.push_back(5);
+    vector<int> nums;
+    nums.push_back(1);
+    nums.push_back(2);
+    nums.push_back(1);
+    nums.push_back(3);
+    nums.push_back(2);
+    nums.push_back(5);
 //    nums.push_back(7);
 //    nums.push_back(4);
 //    vector<int> result = normalAlgo.ProductExceptSelf(nums);
 //    for(size_t i = 0; i < result.size(); ++i)
 //        cout << result[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.NthUglyNumber(9) << endl;
+    //cout << normalAlgo.SingleNumber(nums) << endl;
+    normalAlgo.SingleNumber(nums);
 
 #endif // NORMAL_ALGO
 

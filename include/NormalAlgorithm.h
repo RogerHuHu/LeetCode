@@ -212,6 +212,20 @@ public:
     */
     int NthUglyNumber(int n);
 
+    /*
+       Given an array of numbers nums, in which exactly two elements appear only once and all the
+       other elements appear exactly twice. Find the two elements that appear only once.
+       For example:
+       Given nums = [1, 2, 1, 3, 2, 5], return [3, 5].
+    */
+    vector<int> SingleNumber(vector<int> &nums);
+
+    /*
+       Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+       The algorithm should run in linear time and in O(1) space.
+    */
+    vector<int> MajorityElementII(vector<int> &nums);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);
