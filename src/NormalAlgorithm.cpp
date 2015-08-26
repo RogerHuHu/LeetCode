@@ -420,6 +420,10 @@ vector<int> NormalAlgorithm::MajorityElementII(vector<int> &nums) {
     return result;
 }
 
+int NormalAlgorithm::MissingNumber(vector<int> &nums) {
+
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {

@@ -226,6 +226,14 @@ public:
     */
     vector<int> MajorityElementII(vector<int> &nums);
 
+    /*
+       Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one
+       that is missing from the array.
+       For example,
+       Given nums = [0, 1, 3] return 2.
+    */
+    int MissingNumber(vector<int> &nums);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);
