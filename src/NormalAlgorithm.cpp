@@ -421,7 +421,12 @@ vector<int> NormalAlgorithm::MajorityElementII(vector<int> &nums) {
 }
 
 int NormalAlgorithm::MissingNumber(vector<int> &nums) {
-
+    int n = nums.size();
+    int sum = n * (n + 1) / 2;
+    for(size_t i = 0; i < n; ++i) {
+        sum -= nums[i];
+    }
+    return sum;
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
