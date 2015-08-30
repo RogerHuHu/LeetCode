@@ -429,6 +429,94 @@ int NormalAlgorithm::MissingNumber(vector<int> &nums) {
     return sum;
 }
 
+int NormalAlgorithm::Caculate(string s) {
+    stack<int> num;
+    stack<char> oper;
+    bool isNum = false;
+    int sum = 0;
+    for(string::size_type i = 0; i < s.size(); ++i) {
+        char ch = s.at(i);
+        if(ch >= '0' && ch <= '9') {
+            while(ch >= '0' && ch <= '9') {
+                sum = sum * 10 + ch - '0';
+                if(++i < s.size())
+                    ch = s.at(i);
+                else
+                    break;
+            }
+            --i;
+            num.push(sum);
+            sum = 0;
+        }
+        else if(ch == '(') {
+            oper.push(ch);
+        }
+        else if(ch == '+' || ch == '-') {
+            if(!oper.empty()) {
+                char tmp = oper.top();
+                if(tmp == '+') {
+                    int num1 = num.top();
+                    num.pop();
+                    int num2 = num.top();
+                    num.pop();
+                    num.push(num1 + num2);
+                    oper.pop();
+                } else if(tmp == '-') {
+                    int num1 = num.top();
+                    num.pop();
+                    int num2 = num.top();
+                    num.pop();
+                    num.push(num2 - num1);
+                    oper.pop();
+                }
+            }
+            oper.push(ch);
+        }
+        else if(ch == ')') {
+            while(oper.top() != '(') {
+                char tmp = oper.top();
+                oper.pop();
+                if(tmp == '+') {
+                    int num1 = num.top();
+                    num.pop();
+                    int num2 = num.top();
+                    num.pop();
+                    num.push(num1 + num2);
+                } else if(tmp == '-') {
+                    int num1 = num.top();
+                    num.pop();
+                    int num2 = num.top();
+                    num.pop();
+                    num.push(num2 - num1);
+                }
+            }
+            oper.pop();
+        }
+    }
+    if(!oper.empty()) {
+        char tmp = oper.top();
+        oper.pop();
+        if(tmp == '+') {
+            int num1 = num.top();
+            num.pop();
+            int num2 = num.top();
+            num.pop();
+            return (num1 + num2);
+        } else if(tmp == '-') {
+            int num1 = num.top();
+            num.pop();
+            int num2 = num.top();
+            num.pop();
+            return (num2 - num1);
+        }
+    }
+    return num.top();
+}
+
+int NormalAlgorithm::CaculateII(string s) {
+
+}
+
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {
     stringstream ss;
     switch(frombase) {

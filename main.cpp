@@ -56,7 +56,7 @@ int main() {
 //    for(size_t i = 0; i < result.size(); ++i)
 //        cout << result[i] << " ";
 //    cout << endl;
-    cout << normalAlgo.MissingNumber(nums) << endl;
+    cout << normalAlgo.Caculate("10+1") << endl;
     //normalAlgo.SingleNumber(nums);
 
 #endif // NORMAL_ALGO
