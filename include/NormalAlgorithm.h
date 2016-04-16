@@ -5,6 +5,7 @@
 #include <vector>
 #include <sstream>
 #include <map>
+#include <stack>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -212,6 +213,52 @@ public:
     */
     int NthUglyNumber(int n);
 
+    /*
+       Given an array of numbers nums, in which exactly two elements appear only once and all the
+       other elements appear exactly twice. Find the two elements that appear only once.
+       For example:
+       Given nums = [1, 2, 1, 3, 2, 5], return [3, 5].
+    */
+    vector<int> SingleNumber(vector<int> &nums);
+
+    /*
+       Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
+       The algorithm should run in linear time and in O(1) space.
+    */
+    vector<int> MajorityElementII(vector<int> &nums);
+
+    /*
+       Given an array containing n distinct numbers taken from 0, 1, 2, ..., n, find the one
+       that is missing from the array.
+       For example,
+       Given nums = [0, 1, 3] return 2.
+    */
+    int MissingNumber(vector<int> &nums);
+
+    /*
+       Implement a basic calculator to evaluate a simple expression string.
+       The expression string may contain open ( and closing parentheses ), the plus + or minus
+       sign -, non-negative integers and empty spaces .
+       You may assume that the given expression is always valid.
+       Some examples:
+       "1 + 1" = 2
+       " 2-1 + 2 " = 3
+       "(1+(4+5+2)-3)+(6+8)" = 23
+    */
+    int Caculate(string s);
+
+    /*
+       Implement a basic calculator to evaluate a simple expression string.\
+       The expression string contains only non-negative integers, +, -, *, / operators and empty
+       spaces . The integer division should truncate toward zero.
+       You may assume that the given expression is always valid.
+       Some examples:
+       "3+2*2" = 7
+       " 3/2 " = 1
+       " 3+5 / 2 " = 5
+    */
+    int CaculateII(string s);
+
     string Int2String(int value, size_t length, int frombase);
 
     void QuickSort(char *array, int _low, int _high);
@@ -225,6 +272,8 @@ public:
     vector<string> Split(string value, string pattern);
 
     uint32_t String2UInt(string value, int frombase);
+
+    int Min(int a, int b, int c);
 protected:
 private:
 };
