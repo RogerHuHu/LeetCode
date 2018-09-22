@@ -52,16 +52,12 @@ int main() {
     nums.push_back(6);
 //    nums.push_back(7);
 //    nums.push_back(4);
-//    vector<int> result = normalAlgo.ProductExceptSelf(nums);
-//    for(size_t i = 0; i < result.size(); ++i)
-//        cout << result[i] << " ";
-//    cout << endl;
-<<<<<<< HEAD
-    cout << normalAlgo.NthUglyNumber(7) << endl;
-=======
-    cout << normalAlgo.Caculate("10+1") << endl;
+    vector<int> result = normalAlgo.twoSum(nums, 3);
+    for(size_t i = 0; i < result.size(); ++i)
+        cout << result[i] << " ";
+    cout << endl;
+    //cout << normalAlgo.twoSum(nums, 3) << endl;
     //normalAlgo.SingleNumber(nums);
->>>>>>> origin/master
 
 #endif // NORMAL_ALGO
 

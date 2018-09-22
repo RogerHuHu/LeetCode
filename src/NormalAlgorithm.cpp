@@ -375,7 +375,9 @@ vector<int> NormalAlgorithm::SingleNumber(vector<int> &nums) {
         else
             B ^= nums[i];
     }
-    return vector<int>({A, B});
+	
+	vector<int> v(A, B);
+    return v;
 }
 
 vector<int> NormalAlgorithm::MajorityElementII(vector<int> &nums) {
@@ -515,6 +517,24 @@ int NormalAlgorithm::Caculate(string s) {
 
 int NormalAlgorithm::CaculateII(string s) {
 
+}
+
+vector<int> NormalAlgorithm::twoSum(vector<int>& nums, int target) {
+	unordered_map<int, int> map;
+	
+	vector<int>::const_iterator iter = nums.begin();
+	for(; iter != nums.end(); ++iter) {
+		int rest = target - *iter;
+		unordered_map<int, int>::const_iterator umap_iter = map.find(rest);
+		if(umap_iter != map.end()) {
+			vector<int> vec;
+			vec.push_back(umap_iter->first);
+			vec.push_back(*iter);
+			return vec; 
+		}
+		
+		map.insert(make_pair(*iter, *iter));
+	}
 }
 
 string NormalAlgorithm::Int2String(int value, size_t length, int frombase) {

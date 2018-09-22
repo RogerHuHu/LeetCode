@@ -6,6 +6,7 @@
 #include <sstream>
 #include <map>
 #include <stack>
+#include <unordered_map>
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -258,6 +259,13 @@ public:
        " 3+5 / 2 " = 5
     */
     int CaculateII(string s);
+	
+	/* 
+	   给定一个整数数组和一个目标值，找出数组中和为目标值的两个数。
+
+	   你可以假设每个输入只对应一种答案，且同样的元素上能被重夊利用。
+	*/
+	vector<int> twoSum(vector<int>& nums, int target);
 
     string Int2String(int value, size_t length, int frombase);
 
